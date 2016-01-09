@@ -13,9 +13,9 @@ using std::map;
 /*! 
  *  \brief     DM2126 Assignment 2
  *  \details   Submit the whole solution, but only this file will be used to grade
- *  \author    <John Doe>
+ *  \author    Lee Sek Heng
  *  \date      2015 
- *  \note      <Admin ID>
+ *  \note      150629Z
  */
 
 
