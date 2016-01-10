@@ -53,7 +53,7 @@ void LinkedList::push_back(int data)
     }
     else
     {
-        Node *decoy = head;
+        Node *decoy = head->next;
         while (decoy->next != 0)
             decoy = decoy->next;
         Node *curr = new Node(data);
@@ -67,11 +67,11 @@ int LinkedList::pop_front()
     {
         return  0;
     }
-    int data = head->data;
-    Node *curr = head;
-    head = head->next;
-    delete curr;
-    return data;
+        int data = head->next->data;
+        Node *curr = head->next;
+        head = head->next->next;
+        delete curr;
+        return data;
 }
 
 int LinkedList::pop_back()
