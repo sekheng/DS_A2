@@ -29,12 +29,16 @@ int main()
     // part 1
     cout << "Part 1" << endl;
     LinkedList ll;
-    ll.push_front(1);
-    ll.push_back(1);
+    ll.push_front(69);
+    ll.push_front(999);
+    ll.push_back(99);
     cout << ll.size() << endl;
     cout << ll.pop_back() << endl;
+    cout << ll.size() << endl;
     cout << ll.pop_front() << endl;
+    cout << ll.size() << endl;
     cout << ll.pop_back() << endl;
+    cout << ll.size() << endl;
     ll.insert_at(2, 10);
     cout << ll.pop_at(0) << endl;
     cout << endl;

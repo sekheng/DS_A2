@@ -33,24 +33,77 @@ LinkedList::~LinkedList()
 
 void LinkedList::push_front(int data)
 {
-    Node *curr = new Node(data);
-    curr->next = head->next;
-    head = curr;
+    if (head->data == 0)
+    {
+        head->data = data;
+    }
+    else 
+    {
+        Node *curr = new Node(data);
+        curr->next = head;
+        head = curr;
+    }
 }
 
 void LinkedList::push_back(int data)
 {
-
+    if (head->data == 0)
+    {
+        head->data = data;
+    }
+    else {
+        Node *curr = new Node(data);
+        Node *decoy = head;
+        while (decoy->next != 0)
+        {
+            decoy = decoy->next;
+        }
+        decoy->next = curr;
+    }
 }
 
 int LinkedList::pop_front()
 {
-    return 0;
+    if (size() == 0)
+    {
+        return  0;
+    }
+    int data = head->data;
+    Node *curr = head;
+    head = head->next;
+    delete curr;
+    return data;
 }
 
 int LinkedList::pop_back()
 {
-    return 0;
+    if (size() == 0)
+    {
+        return 0;
+    }
+    else if (size() == 1)
+    {
+        int data = head->data;
+        head = 0;
+        return data;
+    }
+    else
+    {
+        Node *decoy = head;
+        while (decoy->next != 0)
+        {
+            decoy = decoy->next;
+        }
+        Node *curr = head;
+        while (curr->next != decoy)
+        {
+            curr = curr->next;
+        }
+        curr->next = 0;
+        int data = decoy->data;
+        delete decoy;
+        return data;
+    }
 }
 
 void LinkedList::insert_at(int pos, int data)
@@ -65,7 +118,14 @@ int LinkedList::pop_at(int pos)
 
 size_t LinkedList::size()
 {
-    return 0;
+    size_t count = 0;
+    Node *curr = head;
+    while (curr != 0)
+    {
+        ++count;
+        curr = curr->next;
+    }
+    return count;
 }
 
 //*******************************************************************//
