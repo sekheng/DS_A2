@@ -18,17 +18,24 @@
 //*******************************************************************//
 LinkedList::LinkedList()
 {
-
+    head = new Node();
 }
 
 LinkedList::~LinkedList()
 {
-
+    while (head != 0)
+    {
+        Node *curr = head;
+        head = head->next;
+        delete curr;
+    }
 }
 
 void LinkedList::push_front(int data)
 {
-
+    Node *curr = new Node(data);
+    curr->next = head->next;
+    head = curr;
 }
 
 void LinkedList::push_back(int data)
@@ -66,12 +73,14 @@ size_t LinkedList::size()
 //*******************************************************************//
 Queue::Queue()
 {
-
+    front = new Node();
+    back = new Node();
 }
 
 Queue::~Queue()
 {
-
+    delete front;
+    delete back;
 }
 
 void Queue::enqueue(int)
@@ -94,12 +103,12 @@ size_t Queue::size()
 //*******************************************************************//
 Stack::Stack()
 {
-
+    top = new Node();
 }
 
 Stack::~Stack()
 {
-
+    delete top;
 }
 
 void Stack::push(int)
