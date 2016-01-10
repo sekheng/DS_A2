@@ -29,6 +29,7 @@ int main()
     // part 1
     cout << "Part 1" << endl;
     LinkedList ll;
+    cout << ll.size() << endl;
     ll.push_front(69);
     ll.push_front(999);
     ll.push_back(99);

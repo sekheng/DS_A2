@@ -33,31 +33,30 @@ LinkedList::~LinkedList()
 
 void LinkedList::push_front(int data)
 {
-    if (head->data == 0)
+    if (size() == 0)
     {
-        head->data = data;
+        head->next = new Node(data);
     }
-    else 
+    else
     {
         Node *curr = new Node(data);
-        curr->next = head;
-        head = curr;
+        curr->next = head->next->next;
+        head->next = curr;
     }
 }
 
 void LinkedList::push_back(int data)
 {
-    if (head->data == 0)
+    if (size() == 0)
     {
-        head->data = data;
+        head->next = new Node(data);
     }
-    else {
-        Node *curr = new Node(data);
+    else
+    {
         Node *decoy = head;
         while (decoy->next != 0)
-        {
             decoy = decoy->next;
-        }
+        Node *curr = new Node(data);
         decoy->next = curr;
     }
 }
@@ -119,8 +118,12 @@ int LinkedList::pop_at(int pos)
 size_t LinkedList::size()
 {
     size_t count = 0;
+    if (head == 0)
+    {
+        return 0;
+    }
     Node *curr = head;
-    while (curr != 0)
+    while (curr->next != 0)
     {
         ++count;
         curr = curr->next;
