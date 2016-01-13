@@ -119,12 +119,54 @@ int LinkedList::pop_back()
 
 void LinkedList::insert_at(int pos, int data)
 {
-
+    if (pos == 0 || size() == 0)
+        push_front(data);
+    else
+    {
+        Node * curr = head->next;
+        for (int num = 1; num < pos; ++num)
+        {
+            curr = curr->next;
+            if (curr->next == 0)
+                break;
+        }
+        Node *new_node = new Node(data);
+        if (curr->next != 0)
+        {
+            new_node->next = curr->next;
+        }
+        curr = new_node;
+    }
 }
 
 int LinkedList::pop_at(int pos)
 {
-    return 0;
+    if (size() == 0)
+        return 0;
+    else
+    {
+        Node *curr = head->next;
+        for (int num = 0; num < pos; ++num)
+        {
+            curr = curr->next;
+            if (curr == 0)
+                break;
+        }
+        if (curr == 0)
+            return 0;
+        else if (curr->next == 0)
+        {
+            int data = pop_back();
+            return data;
+        }
+        int data = curr->data;
+        Node *decoy = head->next;
+        while (decoy->next != curr)
+            decoy = decoy->next;
+        decoy->next = curr->next;
+        delete curr;
+        return data;
+    }
 }
 
 size_t LinkedList::size()
