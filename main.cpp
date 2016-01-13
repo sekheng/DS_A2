@@ -43,6 +43,7 @@ int main()
     ll.insert_at(2, 10);
     cout << ll.size() << endl;
     cout << ll.pop_at(0) << endl;
+    cout << ll.size() << endl;
     cout << endl;
 
     // part 2

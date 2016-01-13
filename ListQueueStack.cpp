@@ -192,10 +192,18 @@ Queue::Queue()
 {
     front = new Node();
     back = new Node();
+    front->next = back;
 }
 
 Queue::~Queue()
 {
+    Node *curr = front->next;
+    while (curr != back)
+    {
+        Node *decoy = curr;
+        curr = curr->next;
+        delete decoy;
+    }
     delete front;
     delete back;
 }
@@ -225,7 +233,13 @@ Stack::Stack()
 
 Stack::~Stack()
 {
-    delete top;
+    Node *curr = top;
+    while (curr != 0)
+    {
+        Node *decoy = curr;
+        curr = curr->next;
+        delete decoy;       
+    }
 }
 
 void Stack::push(int)
