@@ -30,6 +30,7 @@ int main()
     cout << "Part 1" << endl;
     LinkedList ll;
     cout << ll.size() << endl;
+    ll.insert_at(99999, 8);
     ll.push_back(69);
     ll.push_front(999);
     ll.push_back(99);
