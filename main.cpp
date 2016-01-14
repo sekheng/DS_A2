@@ -54,6 +54,7 @@ int main()
     cout << ll.size() << endl;
     ll.insert_at(5, 70);
     cout << ll.size() << endl;
+    cout << ll.size() << endl;
     cout << ll.pop_at(3) << endl;
     cout << ll.size() << endl;
     for (int need_delete = 10; need_delete > 0; --need_delete)
@@ -65,6 +66,7 @@ int main()
     // part 2
     cout << "Part 2" << endl;
     Queue q;
+    cout << q.size() << endl;
     q.enqueue(20);
     q.enqueue(42);
     cout << q.dequeue() << endl;
@@ -84,9 +86,22 @@ int main()
     // part 3
     cout << "Part 3" << endl;
     Stack s;
+    cout << s.size() << endl;
     s.push(46);
     s.push(8);
     cout << s.pop() << endl;
+    cout << s.size() << endl;
+    cout << s.pop() << endl;
+    cout << s.size() << endl;
+    for (int num = 10; num <= 1000000; num *= 10)
+    {
+        s.push(num);
+    }
+    cout << s.size() << endl;
+    for (int num = 10; num > 0; --num)
+    {
+        cout << s.pop() << endl;
+    }
     cout << s.size() << endl;
     cout << endl;
 
