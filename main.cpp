@@ -54,6 +54,8 @@ int main()
     cout << ll.size() << endl;
     ll.insert_at(5, 70);
     cout << ll.size() << endl;
+    cout << ll.pop_at(3) << endl;
+    cout << ll.size() << endl;
     for (int need_delete = 10; need_delete > 0; --need_delete)
     {
         cout << ll.pop_front() << endl;
