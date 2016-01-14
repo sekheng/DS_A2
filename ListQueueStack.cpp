@@ -227,7 +227,14 @@ int Queue::dequeue()
 
 size_t Queue::size()
 {
-    return 0;
+    size_t data = 0;
+    Node *curr = front;
+    while (curr->next != back)
+    {
+        curr = curr->next;
+        ++data;
+    }
+    return data;
 }
 
 //*******************************************************************//
