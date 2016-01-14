@@ -215,14 +215,33 @@ Queue::~Queue()
     delete back;
 }
 
-void Queue::enqueue(int)
+void Queue::enqueue(int data)
 {
-
+    Node *curr = new Node(data);
+    if (front->next == back)
+    {
+        curr->next = back;
+        front->next = curr;
+    }
+    else
+    {
+        curr->next = front->next;
+        front->next = curr;
+    }
 }
 
 int Queue::dequeue()
 {
-    return 0;
+    if (size() == 0)
+        return 0;
+    else
+    {
+        int data = front->next->data;
+        Node *curr = front->next;
+        front->next = front->next->next;
+        delete curr;
+        return data;
+    }
 }
 
 size_t Queue::size()
