@@ -275,17 +275,42 @@ Stack::~Stack()
     }
 }
 
-void Stack::push(int)
+void Stack::push(int data)
 {
-
+    Node *curr = new Node(data);
+    curr->next = top->next;
+    top->next = curr;
 }
 
 int Stack::pop()
 {
-    return 0;
+    if (size() == 0)
+        return 0;
+    else
+    {
+        int data = top->next->data;
+        Node *curr = top->next;
+        if (size() == 1)
+        {
+            top->next = 0;
+        }
+        else
+        {
+            top->next = top->next->next;
+        }
+        delete curr;
+        return data;
+    }
 }
 
 size_t Stack::size()
 {
-    return 0;
+    size_t data = 0;
+    Node *curr = top;
+    while (curr->next != 0)
+    {
+        curr = curr->next;
+        ++data;
+    }
+    return data;
 }

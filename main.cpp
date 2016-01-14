@@ -74,6 +74,11 @@ int main()
         q.enqueue(num);
     }
     cout << q.size() << endl;
+    for (int num = 10; num > 0; --num)
+    {
+        cout << q.dequeue() << endl;
+    }
+    cout << q.size() << endl;
     cout << endl;
 
     // part 3
