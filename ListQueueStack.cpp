@@ -1,3 +1,4 @@
+#include "DetectMemoryLeak.h"
 #include "Node.h"
 #include "LinkedList.h"
 #include "Stack.h"
@@ -271,7 +272,7 @@ Stack::~Stack()
     {
         Node *decoy = curr;
         curr = curr->next;
-        delete decoy;       
+        delete decoy;
     }
 }
 

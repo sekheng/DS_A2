@@ -81,6 +81,7 @@
     <ClCompile Include="mission.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DetectMemoryLeak.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Queue.h" />

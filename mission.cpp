@@ -1,12 +1,17 @@
+#include "DetectMemoryLeak.h"
 #include <string>
 #include <vector>
 #include <list>
 #include <map>
+#include <stack>
+#include <queue>
 
 using std::string;
 using std::vector;
 using std::list;
 using std::map;
+using std::stack;
+using std::queue;
 
 // DO NOT MODIFY ANY LINE ABOVE OR ADD EXTRA INCLUDES
 
@@ -26,7 +31,7 @@ using std::map;
 }
 
 // Query machine, hits
-void QueryMachine(vector<int>& data, vector<int>& queries, vector<int>& results)
+void QueryMachine(vector<int>& data, vector<int>& queries, vector<unsigned int>& results)
 {
 
 }
