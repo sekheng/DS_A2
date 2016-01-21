@@ -36,22 +36,59 @@ int main()
     // part 1
     cout << "Part 1" << endl;
     LinkedList ll;
-    ll.push_front(1);
-    ll.push_back(1);
+    cout << ll.size() << endl;
+    ll.insert_at(99999, 8);
+    ll.push_back(69);
+    ll.push_front(999);
+    ll.push_back(99);
     cout << ll.size() << endl;
     cout << ll.pop_back() << endl;
+    cout << ll.size() << endl;
     cout << ll.pop_front() << endl;
+    cout << ll.size() << endl;
+    cout << ll.pop_front() << endl;
+    cout << ll.size() << endl;
     cout << ll.pop_back() << endl;
+    cout << ll.size() << endl;
     ll.insert_at(2, 10);
+    cout << ll.size() << endl;
     cout << ll.pop_at(0) << endl;
+    cout << ll.size() << endl;
+    cout << ll.pop_front() << endl;
+    cout << ll.size() << endl;
+    for (int push = 10, lol = 8; push <= 1000000; push *= 10, lol--)
+    {
+        ll.insert_at(lol, push);
+    }
+    cout << ll.size() << endl;
+    ll.insert_at(10, 70);
+    cout << ll.size() << endl;
+    cout << ll.size() << endl;
+    cout << ll.pop_at(3) << endl;
+    cout << ll.size() << endl;
+    for (int need_delete = 10; need_delete > 0; --need_delete)
+    {
+        cout << ll.pop_front() << endl;
+    }
     cout << endl;
 
     // part 2
     cout << "Part 2" << endl;
     Queue q;
+    cout << q.size() << endl;
     q.enqueue(20);
     q.enqueue(42);
     cout << q.dequeue() << endl;
+    cout << q.size() << endl;
+    for (int num = 10; num <= 1000000; num *= 10)
+    {
+        q.enqueue(num);
+    }
+    cout << q.size() << endl;
+    for (int num = 10; num > 0; --num)
+    {
+        cout << q.dequeue() << endl;
+    }
     cout << q.size() << endl;
     cout << endl;
 

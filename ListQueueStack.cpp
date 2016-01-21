@@ -200,13 +200,13 @@ Queue::Queue()
 {
     front = new Node();
     back = new Node();
-    front->next = back;
+    back->next = front;
 }
 
 Queue::~Queue()
 {
     Node *curr = front->next;
-    while (curr != back)
+    while (curr != 0)
     {
         Node *decoy = curr;
         curr = curr->next;
@@ -219,27 +219,24 @@ Queue::~Queue()
 void Queue::enqueue(int data)
 {
     Node *curr = new Node(data);
-    if (front->next == back)
-    {
-        curr->next = back;
-        front->next = curr;
-    }
-    else
-    {
-        curr->next = front->next;
-        front->next = curr;
-    }
+    Node *decoy = back->next;
+    decoy->next = curr;
+    back->next = curr;
 }
 
 int Queue::dequeue()
 {
-    if (size() == 0)
+    if (back->next == front)
         return 0;
     else
     {
         int data = front->next->data;
         Node *curr = front->next;
         front->next = front->next->next;
+        if (front->next == 0)
+        {
+            back->next = front;
+        }
         delete curr;
         return data;
     }
@@ -249,7 +246,7 @@ size_t Queue::size()
 {
     size_t data = 0;
     Node *curr = front;
-    while (curr->next != back)
+    while (curr->next != 0)
     {
         curr = curr->next;
         ++data;
