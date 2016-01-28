@@ -70,6 +70,16 @@ void LinkedList::push_back(int data)
     }
 }
 
+/******************************************************************************/
+/*!
+\brief
+pop the front node of the linked list
+
+\exception if size() happens to be 0, return 0
+
+\exception if size() happens to be 1, head->next will be pointing to 0
+*/
+/******************************************************************************/
 int LinkedList::pop_front()
 {
     if (size() == 0)
