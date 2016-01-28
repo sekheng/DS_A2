@@ -32,6 +32,14 @@ LinkedList::~LinkedList()
     }
 }
 
+/******************************************************************************/
+/*!
+\brief
+push a new node to the front of the linked list
+
+\exception if size happens to be 0, head->next becomes the new node
+*/
+/******************************************************************************/
 void LinkedList::push_front(int data)
 {
     if (size() == 0)
