@@ -179,12 +179,8 @@ int LinkedList::pop_at(int pos)
 
 size_t LinkedList::size()
 {
-    if (head->next == 0)
-    {
-        return 0;
-    }
-    size_t count = 1;
-    Node *curr = head->next;
+    size_t count = 0;
+    Node *curr = head;
     while (curr->next != 0)
     {
         curr = curr->next;
