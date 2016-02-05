@@ -19,7 +19,7 @@
 //*******************************************************************//
 LinkedList::LinkedList()
 {
-    head = new Node();
+    head = NULL;
 }
 
 LinkedList::~LinkedList()
@@ -36,13 +36,13 @@ void LinkedList::push_front(int data)
 {
     if (size() == 0)
     {
-        head->next = new Node(data);
+        head = new Node(data);
     }
     else
     {
         Node *curr = new Node(data);
-        curr->next = head->next;
-        head->next = curr;
+        curr->next = head;
+        head = curr;
     }
 }
 
@@ -50,11 +50,11 @@ void LinkedList::push_back(int data)
 {
     if (size() == 0)
     {
-        head->next = new Node(data);
+        head = new Node(data);
     }
     else
     {
-        Node *decoy = head->next;
+        Node *decoy = head;
         while (decoy->next != 0)
             decoy = decoy->next;
         Node *curr = new Node(data);
@@ -64,23 +64,24 @@ void LinkedList::push_back(int data)
 
 int LinkedList::pop_front()
 {
-    if (size() == 0)
+    size_t getSize = size();
+    if (getSize == 0)
     {
         return  0;
     }
-    else if (size() == 1)
+    else if (getSize == 1)
     {
-        int data = head->next->data;
-        Node *curr = head->next;
-        head->next = 0;
+        int data = head->data;
+        Node *curr = head;
+        head = NULL;
         delete curr;
         return data;
     }
     else
     {
-        int data = head->next->data;
-        Node *curr = head->next;
-        head->next = head->next->next;
+        int data = head->data;
+        Node *curr = head;
+        head = head->next;
         delete curr;
         return data;
     }
@@ -88,20 +89,21 @@ int LinkedList::pop_front()
 
 int LinkedList::pop_back()
 {
-    if (size() == 0)
+    size_t getSize = size();
+    if (getSize == 0)
     {
         return 0;
     }
     else
     {
-        Node *decoy = head->next;
+        Node *decoy = head;
         while (decoy->next != 0)
         {
             decoy = decoy->next;
         }
-        if (size() != 1)
+        if (getSize != 1)
         {
-            Node *curr = head->next;
+            Node *curr = head;
             while (curr->next != decoy)
             {
                 curr = curr->next;
@@ -110,7 +112,7 @@ int LinkedList::pop_back()
         }
         else
         {
-            head->next = 0;
+            head = 0;
         }
         int data = decoy->data;
         delete decoy;
@@ -126,11 +128,9 @@ void LinkedList::insert_at(int pos, int data)
     }
     else
     {
-        Node * curr = head->next;
-        for (int num = 1; num < pos; ++num)
+        Node * curr = head;
+        for (int num = 1; num < pos && curr->next != 0; ++num)
         {
-            if (curr->next == 0)
-                break;
             curr = curr->next;
         }
         Node *new_node = new Node(data);
@@ -179,17 +179,8 @@ int LinkedList::pop_at(int pos)
 
 size_t LinkedList::size()
 {
-    if (head->next == 0)
-    {
-        return 0;
-    }
-    size_t count = 1;
-    Node *curr = head->next;
-    while (curr->next != 0)
-    {
-        curr = curr->next;
-        ++count;
-    }
+    size_t count = 0;
+    for (Node* curr = head; curr != 0; curr = curr->next, ++count) {};
     return count;
 }
 
