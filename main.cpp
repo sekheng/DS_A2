@@ -56,7 +56,7 @@ int main()
     cout << ll.size() << endl;
     cout << ll.pop_front() << endl;
     cout << ll.size() << endl;
-    for (int push = 10, lol = 8; push <= 1000000; push *= 10, lol--)
+    for (int push = 10, lol = 8; push <= 1000000; push *= 10, --lol)
     {
         ll.insert_at(lol, push);
     }

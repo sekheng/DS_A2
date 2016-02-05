@@ -32,6 +32,14 @@ LinkedList::~LinkedList()
     }
 }
 
+/******************************************************************************/
+/*!
+\brief
+push a new node to the front of the linked list
+
+\exception if size happens to be 0, head->next becomes the new node
+*/
+/******************************************************************************/
 void LinkedList::push_front(int data)
 {
     if (size() == 0)
@@ -62,6 +70,16 @@ void LinkedList::push_back(int data)
     }
 }
 
+/******************************************************************************/
+/*!
+\brief
+pop the front node of the linked list
+
+\exception if size() happens to be 0, return 0
+
+\exception if size() happens to be 1, head->next will be pointing to 0
+*/
+/******************************************************************************/
 int LinkedList::pop_front()
 {
     size_t getSize = size();
@@ -122,33 +140,44 @@ int LinkedList::pop_back()
 
 void LinkedList::insert_at(int pos, int data)
 {
-    if (pos == 0 || size() == 0)
+    size_t getSize = size();
+    if (pos <= 0 || getSize == 0)
     {
         push_front(data);
+    }
+    else if (static_cast<int>(getSize) <= pos) {
+        push_back(data);
     }
     else
     {
         Node * curr = head;
-        for (int num = 1; num < pos && curr->next != 0; ++num)
+        for (int num = 1; num <= pos && curr->next != 0; ++num)
         {
             curr = curr->next;
         }
         Node *new_node = new Node(data);
-        if (curr->next != 0)
-        {
-            new_node->next = curr->next;
-        }
+        new_node->next = curr->next;
         curr->next = new_node;
     }
 }
 
 int LinkedList::pop_at(int pos)
 {
-    if (size() == 0)
+    size_t getSize = size();
+    if (getSize == 0)
         return 0;
-    else if (pos == 0)
+    else if (pos <= 0)
     {
         int data = pop_front();
+        return data;
+    }
+    else if (static_cast<int>(getSize) < pos)
+    {
+        return 0;
+    }
+    else if (static_cast<int>(getSize) == pos)
+    {
+        int data = pop_back();
         return data;
     }
     else
@@ -158,20 +187,13 @@ int LinkedList::pop_at(int pos)
         {
             curr = curr->next;
         }
-        if (curr == 0)
-            return 0;
-        else if (curr->next == 0)
-        {
-            int data = pop_back();
+            int data = curr->data;
+            Node *decoy = head;
+            while (decoy->next != curr)
+                decoy = decoy->next;
+            decoy->next = curr->next;
+            delete curr;
             return data;
-        }
-        int data = curr->data;
-        Node *decoy = head;
-        while (decoy->next != curr)
-            decoy = decoy->next;
-        decoy->next = curr->next;
-        delete curr;
-        return data;
     }
 }
 
