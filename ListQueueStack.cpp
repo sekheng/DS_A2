@@ -153,12 +153,10 @@ int LinkedList::pop_at(int pos)
     }
     else
     {
-        Node *curr = head->next;
-        for (int num = 0; num < pos; ++num)
+        Node *curr = head;
+        for (int num = 0; num < pos && curr != 0; ++num)
         {
             curr = curr->next;
-            if (curr == 0)
-                break;
         }
         if (curr == 0)
             return 0;
@@ -168,7 +166,7 @@ int LinkedList::pop_at(int pos)
             return data;
         }
         int data = curr->data;
-        Node *decoy = head->next;
+        Node *decoy = head;
         while (decoy->next != curr)
             decoy = decoy->next;
         decoy->next = curr->next;
