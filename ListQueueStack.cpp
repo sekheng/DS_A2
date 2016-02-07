@@ -297,26 +297,31 @@ Stack::~Stack()
 
 void Stack::push(int data)
 {
-    Node *curr = new Node(data);
-    curr->next = top->next;
-    top->next = curr;
+    if (top == NULL) {
+        top = new Node(data);
+    }
+    else {
+        Node *decoy = top;
+        top = new Node(data);
+        top->next = decoy;
+    }
 }
 
 int Stack::pop()
 {
-    if (size() == 0)
+    if (top == NULL)
         return 0;
     else
     {
-        int data = top->next->data;
-        Node *curr = top->next;
-        if (size() == 1)
+        int data = top->data;
+        Node *curr = top;
+        if (top->next == NULL)
         {
-            top->next = 0;
+            top = NULL;
         }
         else
         {
-            top->next = top->next->next;
+            top = top->next;
         }
         delete curr;
         return data;

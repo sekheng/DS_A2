@@ -100,18 +100,18 @@ int main()
     s.push(8);
     cout << s.pop() << endl;
     cout << s.size() << endl;
-    //cout << s.pop() << endl;
-    //cout << s.size() << endl;
-    //for (int num = 10; num <= 1000000; num *= 10)
-    //{
-    //    s.push(num);
-    //}
-    //cout << s.size() << endl;
-    //for (int num = 10; num > 0; --num)
-    //{
-    //    cout << s.pop() << endl;
-    //}
-    //cout << s.size() << endl;
+    cout << s.pop() << endl;
+    cout << s.size() << endl;
+    for (int num = 10; num <= 1000000; num *= 10)
+    {
+        s.push(num);
+    }
+    cout << s.size() << endl;
+    for (int num = 10; num > 0; --num)
+    {
+        cout << s.pop() << endl;
+    }
+    cout << s.size() << endl;
     cout << endl;
 
     // part 4
