@@ -209,44 +209,55 @@ size_t LinkedList::size()
 //*******************************************************************//
 Queue::Queue()
 {
-    front = new Node();
-    back = new Node();
-    back->next = front;
+    front = NULL;
+    back = NULL;
 }
 
 Queue::~Queue()
 {
-    Node *curr = front->next;
+    Node *curr = front;
     while (curr != 0)
     {
         Node *decoy = curr;
         curr = curr->next;
         delete decoy;
     }
-    delete front;
-    delete back;
 }
 
 void Queue::enqueue(int data)
 {
-    Node *curr = new Node(data);
-    Node *decoy = back->next;
-    decoy->next = curr;
-    back->next = curr;
+    if (front == NULL) {
+        front = new Node(data);
+        front->next = back;
+    }
+    else if (back == NULL) {
+        back = new Node(data);
+        front->next = back;
+    }
+    else {
+        Node *decoy = back;
+        back = new Node(data);
+        decoy->next = back;
+    }
 }
 
 int Queue::dequeue()
 {
-    if (back->next == front)
+    if (front == NULL)
         return 0;
     else
     {
-        int data = front->next->data;
-        Node *curr = front->next;
-        front->next = front->next->next;
-        if (front->next == 0)
-        {
-            back->next = front;
+        int data = front->data;
+        Node *curr = front;
+        if (back == NULL) {
+            front = NULL;
+        }
+        else {
+            front = front->next;
+            if (front == back) {
+                back = NULL;
+                front->next = back;
+            }
         }
         delete curr;
         return data;
@@ -257,7 +268,7 @@ size_t Queue::size()
 {
     size_t data = 0;
     Node *curr = front;
-    while (curr->next != 0)
+    while (curr != 0)
     {
         curr = curr->next;
         ++data;
@@ -270,7 +281,7 @@ size_t Queue::size()
 //*******************************************************************//
 Stack::Stack()
 {
-    top = new Node();
+    top = NULL;
 }
 
 Stack::~Stack()
@@ -316,7 +327,7 @@ size_t Stack::size()
 {
     size_t data = 0;
     Node *curr = top;
-    while (curr->next != 0)
+    while (curr != 0)
     {
         curr = curr->next;
         ++data;
