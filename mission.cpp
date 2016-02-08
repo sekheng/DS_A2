@@ -63,13 +63,16 @@ using std::queue;
 void QueryMachine(vector<int>& data, vector<int>& queries, vector<unsigned int>& results)
 {
     map<int, size_t> isize_tmap;
+    for (auto it : queries) {
+        isize_tmap.insert(std::pair<int, size_t>(it, 0));
+    }
     for (auto it : data) {
-        if (isize_tmap.count(it) == 0) {
-            isize_tmap.insert(std::pair<int, int>(it, 1));
-        }
-        else {
+        if (isize_tmap.count(it) == 1) {
             map<int, size_t>::iterator it2 = isize_tmap.find(it);
             it2->second += 1;
         }
+    }
+    for (map<int, size_t>::iterator it = isize_tmap.begin(); it != isize_tmap.end(); ++it) {
+        results.push_back(it->second);
     }
 }
