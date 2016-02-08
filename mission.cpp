@@ -62,5 +62,14 @@ using std::queue;
 // Query machine, hits
 void QueryMachine(vector<int>& data, vector<int>& queries, vector<unsigned int>& results)
 {
-
+    map<int, size_t> isize_tmap;
+    for (auto it : data) {
+        if (isize_tmap.count(it) == 0) {
+            isize_tmap.insert(std::pair<int, int>(it, 1));
+        }
+        else {
+            map<int, size_t>::iterator it2 = isize_tmap.find(it);
+            it2->second += 1;
+        }
+    }
 }
