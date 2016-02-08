@@ -27,8 +27,37 @@ using std::queue;
 // Balanced parenthesis
  bool Brackets(const string& input)
 {
-    return false;
-}
+    const char *charstring = input.c_str();
+    stack<char> brackets;
+    for (int num = 0; charstring[num] != '\0'; ++num) {
+        switch (charstring[num]) {
+        case ')':  if (brackets.size() <= 0 || brackets.top() != '(') { return false; }
+                   else {
+                       brackets.pop();
+                   } break;
+        case '}': if (brackets.size() <= 0 || brackets.top() != '{') { return false; }
+                  else {
+                      brackets.pop();
+                  } break;
+        case ']': if (brackets.size() <= 0 || brackets.top() != '[') { return false; }
+                  else {
+                      brackets.pop();
+                  } break;
+        case '>': if (brackets.size() <= 0 || brackets.top() != '<') { return false; }
+                  else {
+                      brackets.pop();
+                  } break;
+        default:        
+            brackets.push(charstring[num]);
+        }
+    }
+    if (brackets.size() <= 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+ }
 
 // Query machine, hits
 void QueryMachine(vector<int>& data, vector<int>& queries, vector<unsigned int>& results)

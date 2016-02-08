@@ -118,6 +118,11 @@ int main()
     cout << "Part 4" << endl;
     const char* input = "<>";
     cout << Brackets(input) << endl;
+    cout << Brackets("()") << endl;
+    cout << Brackets("(<)>") << endl;
+    cout << Brackets("()((<>)()") << endl;
+    cout << Brackets("{<[()]>}") << endl;
+    cout << Brackets("()()[]<>{{[{}]}}") << endl;
     cout << endl;
 
 
