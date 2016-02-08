@@ -72,7 +72,8 @@ void QueryMachine(vector<int>& data, vector<int>& queries, vector<unsigned int>&
             it2->second += 1;
         }
     }
-    for (map<int, size_t>::iterator it = isize_tmap.begin(); it != isize_tmap.end(); ++it) {
-        results.push_back(it->second);
+    for (auto it : queries) {
+        map<int, size_t>::iterator it2 = isize_tmap.find(it);
+        results.push_back(it2->second);
     }
 }
