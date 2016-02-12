@@ -151,7 +151,7 @@ void LinkedList::insert_at(int pos, int data)
     else
     {
         Node * curr = head;
-        for (int num = 1; num <= pos && curr->next != 0; ++num)
+        for (int num = 1; num < pos && curr->next != 0; ++num)
         {
             curr = curr->next;
         }
@@ -164,18 +164,14 @@ void LinkedList::insert_at(int pos, int data)
 int LinkedList::pop_at(int pos)
 {
     size_t getSize = size();
-    if (getSize == 0)
+    if (getSize == 0 || pos > (static_cast<int>(getSize) - 1))
         return 0;
     else if (pos <= 0)
     {
         int data = pop_front();
         return data;
     }
-    else if (static_cast<int>(getSize) < pos)
-    {
-        return 0;
-    }
-    else if (static_cast<int>(getSize) == pos)
+    else if ((static_cast<int>(getSize) - 1) == pos)
     {
         int data = pop_back();
         return data;
@@ -187,13 +183,13 @@ int LinkedList::pop_at(int pos)
         {
             curr = curr->next;
         }
-            int data = curr->data;
-            Node *decoy = head;
-            while (decoy->next != curr)
-                decoy = decoy->next;
-            decoy->next = curr->next;
-            delete curr;
-            return data;
+        int data = curr->data;
+        Node *decoy = head;
+        while (decoy->next != curr)
+            decoy = decoy->next;
+        decoy->next = curr->next;
+        delete curr;
+        return data;
     }
 }
 

@@ -62,9 +62,10 @@ int main()
     }
     cout << ll.size() << endl;
     ll.insert_at(10, 70);
+    ll.insert_at(2, 90);
     cout << ll.size() << endl;
     cout << ll.size() << endl;
-    cout << ll.pop_at(3) << endl;
+    cout << ll.pop_at(-1) << endl;
     cout << ll.size() << endl;
     for (int need_delete = 10; need_delete > 0; --need_delete)
     {
