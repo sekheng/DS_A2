@@ -47,8 +47,8 @@ using std::queue;
                   else {
                       brackets.pop();
                   } break;
-        default:        
-            brackets.push(charstring[num]);
+        default:
+                brackets.push(charstring[num]);
         }
     }
     if (brackets.size() <= 0) {
