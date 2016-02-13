@@ -77,6 +77,7 @@ int main()
     cout << "Part 2" << endl;
     Queue q;
     cout << q.size() << endl;
+    cout << q.dequeue() << endl;
     q.enqueue(20);
     q.enqueue(42);
     cout << q.dequeue() << endl;
@@ -144,31 +145,31 @@ int main()
     }
     cout << endl;
     results.empty();
-    //vector<int> data2 = { 1, 2, 3, 4, 3, 2, 2, 6 };
-    //vector<int> query2 = { 1, 2, 3 };
-    //vector<unsigned int> results2;
-    //QueryMachine(data2, query2, results2);
-    //for (size_t i = 0; i < results2.size(); ++i)
-    //{
-    //    cout << results2[i] << " ";
-    //}
-    //cout << endl;
-    //vector<int> query3 = { 3, 4, 5 };
-    //vector<unsigned int> results3;
-    //QueryMachine(data2, query3, results3);
-    //for (size_t i = 0; i < results3.size(); ++i)
-    //{
-    //    cout << results3[i] << " ";
-    //}
-    //cout << endl;
-    //vector<int> query4 = { 6, 5, 7 };
-    //vector<unsigned int> results4;
-    //QueryMachine(data2, query4, results4);
-    //for (size_t i = 0; i < results4.size(); ++i)
-    //{
-    //    cout << results4[i] << " ";
-    //}
-    //cout << endl;
+    vector<int> data2 = { 1, 2, 3, 4, 3, 2, 2, 6 };
+    vector<int> query2 = { 1, 2, 3 };
+    vector<unsigned int> results2;
+    QueryMachine(data2, query2, results2);
+    for (size_t i = 0; i < results2.size(); ++i)
+    {
+        cout << results2[i] << " ";
+    }
+    cout << endl;
+    vector<int> query3 = { 3, 4, 5 };
+    vector<unsigned int> results3;
+    QueryMachine(data2, query3, results3);
+    for (size_t i = 0; i < results3.size(); ++i)
+    {
+        cout << results3[i] << " ";
+    }
+    cout << endl;
+    vector<int> query4 = { 6, 5, 7 };
+    vector<unsigned int> results4;
+    QueryMachine(data2, query4, results4);
+    for (size_t i = 0; i < results4.size(); ++i)
+    {
+        cout << results4[i] << " ";
+    }
+    cout << endl;
     cout << "Time taken to run the above code is " << timeTaken(start) << "ms" << endl;
 
     return 0;

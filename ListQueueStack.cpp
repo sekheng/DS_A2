@@ -212,7 +212,7 @@ Queue::Queue()
 Queue::~Queue()
 {
     Node *curr = front;
-    while (curr != 0)
+    while (curr != NULL)
     {
         Node *decoy = curr;
         curr = curr->next;
@@ -224,7 +224,7 @@ void Queue::enqueue(int data)
 {
     if (front == NULL) {
         front = new Node(data);
-        front->next = back;
+        back = front;
     }
     else if (back == NULL) {
         back = new Node(data);
@@ -245,16 +245,10 @@ int Queue::dequeue()
     {
         int data = front->data;
         Node *curr = front;
-        if (back == NULL) {
-            front = NULL;
+        if (front == back) {
+            back = NULL;
         }
-        else {
-            front = front->next;
-            if (front == back) {
-                back = NULL;
-                front->next = back;
-            }
-        }
+        front = front->next;
         delete curr;
         return data;
     }
