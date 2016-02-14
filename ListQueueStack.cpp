@@ -226,10 +226,6 @@ void Queue::enqueue(int data)
         front = new Node(data);
         back = front;
     }
-    else if (back == NULL) {
-        back = new Node(data);
-        front->next = back;
-    }
     else {
         Node *decoy = back;
         back = new Node(data);
